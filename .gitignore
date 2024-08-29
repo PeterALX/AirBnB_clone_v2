@@ -1,4 +1,3 @@
-*.pyc
-test_params_create
+*__pycache__*
 *.json
-main*.py
+*.tgz

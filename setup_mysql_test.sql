@@ -1,12 +1,10 @@
--- this script prepares a MySQL server for the project
--- create project testing database with the name : hbnb_test_db
+-- script that prepares a dev MySQL server for the AirBnB clone project.
 CREATE DATABASE IF NOT EXISTS hbnb_test_db;
--- creates a new user named : hbnb_test with all privileges on the db hbnb_test_db
--- with the password : hbnb_test_pwd if it dosen't exist
+-- a new user hbnb_test (in localhost).
+-- the password of hbnb_test should be set to hbnb_test_pwd.
 CREATE USER IF NOT EXISTS 'hbnb_test'@'localhost' IDENTIFIED BY 'hbnb_test_pwd';
--- granting the SELECT privilege for the user hbnb_test on the db performance_schema
-GRANT SELECT ON performance_schema.* TO 'hbnb_test'@'localhost';
-FLUSH PRIVILEGES;
--- granting all privileges to the new user on hbnb_test_db
-GRANT ALL PRIVILEGES ON hbnb_test_db.* TO 'hbnb_test'@'localhost';
-FLUSH PRIVILEGES;
+GRANT USAGE ON *.* TO 'hbnb_test'@'localhost';
+-- hbnb_test should have all privileges on the database hbnb_test_db only.
+GRANT ALL PRIVILEGES ON `hbnb_test_db`.* TO 'hbnb_test'@'localhost';
+-- hbnb_test should have SELECT privilege on the database performance_schema.
+GRANT SELECT ON `performance_schema`.* TO 'hbnb_test'@'localhost';
